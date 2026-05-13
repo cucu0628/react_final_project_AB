@@ -1,4 +1,4 @@
-MICROSLOP
+Nem szeretem a github-ot mert sokszor nem elérhető
 
 # React + Vite
 
