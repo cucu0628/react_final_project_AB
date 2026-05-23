@@ -1,6 +1,9 @@
 import { NavLink } from "react-router-dom"
+import { useAuth } from "../Context/LoginContext";
 
 const NavBar = () => {
+
+    const { isLogged, logout } = useAuth();
 
     const style = ({isActive}) =>{
         if(isActive){
@@ -27,12 +30,10 @@ const NavBar = () => {
                             <li className="nav-item">
                                 <NavLink to="/telo" className={style}>Telefonok</NavLink>
                             </li>
-                            <li className="nav-item">
-                                <NavLink to="/admin" className={style}>Admin</NavLink>
-                            </li>
-
+                            {isLogged ? <li className="nav-item"><NavLink to="/admin" className={style}>Admin</NavLink></li> : ""}
                             <li className="nav-item ms-auto">
-                                <NavLink to="/login" className={style}>Login</NavLink>
+                                {!isLogged ? <NavLink to="/login" className={style}>Login</NavLink> : <NavLink className="nav-link" onClick={logout}>Logout</NavLink>}
+                                
                             </li>
                         </ul>
                     </div>
