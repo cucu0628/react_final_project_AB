@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { useAuth } from "../Context/LoginContext";
 import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2'
 
 const Login = () => {
     const username = useRef()
@@ -24,13 +25,32 @@ const Login = () => {
                     const data = await resp.json();
                     localStorage.setItem("token", data.token);
                     login();
+ 
                     navigate('/admin');
+                    Swal.fire({
+                        theme: "dark",
+                        icon: "success",
+                        title: "Good",
+                        text: "Sikeres Bejelentkezés",
+                    });
                 } else {
                     console.error('Sikertelen bejelentkezés');
+                    Swal.fire({
+                        theme: "dark",
+                        icon: "error",
+                        title: "Oops...",
+                        text: "Sikertelen Bejelentkezés",
+                    });
                 }
 
             } catch (err) {
                 console.error('Error:', err);
+                Swal.fire({
+                    theme: "dark",
+                        icon: "error",
+                        title: "Oops...",
+                        text: "Sikertelen Bejelentkezés",
+                    });
             }
         }
     }
