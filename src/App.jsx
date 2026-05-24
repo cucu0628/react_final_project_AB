@@ -6,6 +6,7 @@ import Login from './modules/Login'
 import Home from './modules/Home'
 import Admin from './modules/Admin'
 import ProtectedRoute from './Components/ProtectedRoute'
+import Products from './modules/Products'
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/Login' element={<Login />} />
           <Route path='/admin' element={<ProtectedRoute> <Admin /> </ProtectedRoute>} />
+          <Route path='/telo' element={<Products />} />
         </Routes>
       </AuthProvider>
     </>
