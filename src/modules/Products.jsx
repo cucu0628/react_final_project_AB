@@ -24,7 +24,7 @@ const Products = () => {
     return (
         <div className="container mt-5">
             <div className="row g-4">
-            {products.map((item) => (<ProductCard name={item.name} desc={item.description} img={item.img_url} price={item.price} key={item.id} />))}
+            {products.map((item) => (<ProductCard name={item.name} desc={item.description} img={item.img_url} price={item.price} key={item.id} id={item.id}/>))}
             </div>
         </div>
     )
