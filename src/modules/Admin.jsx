@@ -77,7 +77,7 @@ const Admin = () => {
 
                         <div className="mb-4">
                             <label htmlFor="productDesc" className="form-label">Leírás</label>
-                            <textarea className="form-control" id="productDesc" rows="3" placeholder="A termék részletes leírása..." ref={leiras} style={{maxHeight: "150px"}}></textarea>
+                            <textarea className="form-control" id="productDesc" rows="3" placeholder="A termék részletes leírása..." ref={leiras} style={{maxHeight: "85px"}}></textarea>
                         </div>
 
 
