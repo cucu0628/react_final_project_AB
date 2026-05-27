@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import ProductCard from "./ProductCard"
+import Swal from "sweetalert2"
 
 
 const Products = () => {
@@ -17,6 +18,26 @@ const Products = () => {
 
     }
 
+    
+    const del = async (id) => {
+        const resp = await fetch(`http://localhost:3000/products/${id}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "authorization": localStorage.getItem("token"),
+            },
+        })
+        if(resp.ok){
+            Swal.fire({
+                theme: "dark",
+                title: "Sikeres törlés",
+                icon: "success",
+            })
+            setProducts([])
+            getProd()
+        }
+    }
+
     useEffect(() => {
         getProd();
     }, [])
@@ -24,7 +45,7 @@ const Products = () => {
     return (
         <div className="container mt-5">
             <div className="row g-4">
-            {products.map((item) => (<ProductCard name={item.name} desc={item.description} img={item.img_url} price={item.price} key={item.id} id={item.id}/>))}
+            {products.map((item) => (<ProductCard name={item.name} desc={item.description} img={item.img_url} price={item.price} key={item.id} id={item.id} del={del}/>))}
             </div>
         </div>
     )

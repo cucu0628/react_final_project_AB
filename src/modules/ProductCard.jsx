@@ -3,7 +3,7 @@ import { useAuth } from "../Context/LoginContext"
 import Swal from "sweetalert2"
 import { useState } from "react"
 
-const ProductCard = ({ name, desc, img, price, id }) => {
+const ProductCard = ({ name, desc, img, price, id, del }) => {
     const { isLogged } = useAuth()
 
     const delConf = (id) => {
@@ -21,23 +21,6 @@ const ProductCard = ({ name, desc, img, price, id }) => {
     }
 
 
-    const del = async (id) => {
-        const resp = await fetch(`http://localhost:3000/products/${id}`, {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json",
-                "authorization": localStorage.getItem("token"),
-            },
-        })
-        if(resp.ok){
-            Swal.fire({
-                theme: "dark",
-                title: "Sikeres törlés",
-                icon: "success",
-            })
-            window.location.reload();
-        }
-    }
 
     return (
         <div className="card mx-2" style={{ width: "18rem" }}>
