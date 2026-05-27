@@ -55,7 +55,7 @@ const Login = () => {
         }
     }
     return (
-        <div className="position-absolute top-50 start-50 translate-middle">
+        <div className="container d-flex justify-content-center align-items-center mt-5">
             <form className="mx-auto p-4" onSubmit={(e) => e.preventDefault()}>
                 <div className="mb-3">
                     <label htmlFor="exampleInputUsername1" className="form-label">Username</label>
